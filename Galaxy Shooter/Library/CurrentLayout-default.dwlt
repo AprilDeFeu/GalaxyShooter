@@ -218,7 +218,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 35
+  controlID: 60
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -415,21 +415,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000007e33000080330000
+    m_ExpandedIDs: ffffffff000000007e3300008033000098330000a2330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Laser
+      m_OriginalName: Laser
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 14252
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 
@@ -529,7 +529,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -596,9 +596,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 9.14, y: 5.63, z: -4.67}
+    m_Target: {x: -0.08959182, y: 2.0728898, z: 1.7874975}
     speed: 2
-    m_Value: {x: 9.14, y: 5.63, z: -4.67}
+    m_Value: {x: -0.08959182, y: 2.0728898, z: 1.7874975}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -644,13 +644,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.25757167, y: 0.21377079, z: -0.058557317, w: 0.94052094}
+    m_Target: {x: 0.0063101, y: 0.0014964205, z: -0.000022435022, w: 1.0000091}
     speed: 2
-    m_Value: {x: 0.2575653, y: 0.21376549, z: -0.058555864, w: 0.94049764}
+    m_Value: {x: 0.0063099107, y: 0.0014963755, z: -0.000022434348, w: 0.999979}
   m_Size:
-    m_Target: 22
+    m_Target: 9.95585
     speed: 2
-    m_Value: 22
+    m_Value: 9.95585
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -704,7 +704,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 6a2e0000
+      m_SelectedIDs: ac370000
       m_LastClickedID: 0
       m_ExpandedIDs: 70fbffff
       m_RenameOverlay:
@@ -722,7 +722,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 11}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
