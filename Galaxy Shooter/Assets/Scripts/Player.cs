@@ -21,49 +21,33 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CalculateMovement();
+    }
+
+    void CalculateMovement()
+    {
         float hInput = Input.GetAxis("Horizontal");     // Horizontal Input
         float vInput = Input.GetAxis("Vertical");       // Vertical Input
 
-        // Simple way
-        // new Vector3(1, 0, 0) * speed * real time
-        // new Vector3(0, 1, 0) * speed * real time
-        //transform.Translate(Vector3.right  * hInput * _speed * Time.deltaTime);
-        //transform.Translate(Vector3.up * vInput * _speed * Time.deltaTime);
-
-        // Optimized way (by vector addition)
-        // new Vector3(1, 1, 0) * speed * real time
         Vector3 direction = new Vector3(hInput, vInput, 0);
         transform.Translate(direction * _speed * Time.deltaTime);
 
-        // if player.position.y > 0 then direction = new Vector (1, 0, 0);
-        if (transform.position.y >= 0.5) 
+        // Y-axis limits
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.5f, 0.5f), 0);
+
+        // X-axis limits*
+        // transform.position = new Vector3(Mathf.Clamp(transform.position.x, -11.0f, 11.0f), transform.position.y, 0);
+
+        // X-axis wrap*
+        if (transform.position.x >= 11.3)
         {
-            transform.position = new Vector3(transform.position.x, 0.5f, 0);
+            transform.position = new Vector3(-11.3f, transform.position.y, 0);
         }
-        else if (transform.position.y <= -3.5)
+        else if (transform.position.x <= -11.3)
         {
-            transform.position = new Vector3(transform.position.x, -3.5f, 0);
+            transform.position = new Vector3(11.3f, transform.position.y, 0);
         }
 
-        // X-axis limits
-        //if (transform.position.x >= 9)
-        //{
-        //    transform.position = new Vector3(9f, transform.position.y, 0);
-        //}
-        //else if (transform.position.x <= -9)
-        //{
-        //    transform.position = new Vector3(-9f, transform.position.y, 0);
-        //}
-
-        //X-axis wrap
-        if (transform.position.x >= 11)
-        {
-            transform.position = new Vector3(transform.position.x - 22, transform.position.y, 0);
-        }
-        else if (transform.position.x <= -11)
-        {
-            transform.position = new Vector3(transform.position.x + 22, transform.position.y, 0);
-        }
-
+        // * Only activate one of these but not both.
     }
 }
