@@ -7,7 +7,7 @@ public class Laser : MonoBehaviour
     // Start is called before the first frame update
 
     // Speed variable of 10
-    private float _speed = 10.0f;
+    private float _speed = 20;
     void Start()
     {
         
@@ -16,8 +16,12 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Move laser shot upwards
-        Vector3 direction = new Vector3(0, 1, 0);
-        transform.Translate(direction * _speed * Time.deltaTime); 
+        transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        if (transform.position.y >= 8) DestroyGameObject();
+    }
+
+    void DestroyGameObject()
+    {
+        Destroy(gameObject);
     }
 }
