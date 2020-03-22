@@ -9,9 +9,12 @@ public class Player : MonoBehaviour
     // variables have names
     // (opt) assigned value
     [SerializeField]
-    private float _speed = 15;
+    private float _speed = 15f;
     [SerializeField]
     private GameObject _laserPrefab;
+    [SerializeField]
+    private float _fireRate = 0.2f;
+    private float _canFire = -1f;
      
     // Start is called before the first frame update
     void Start()
@@ -24,10 +27,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         CalculateMovement_Limit();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(_laserPrefab, transform.position, Quaternion.identity);
-        }
+        FireLaser();
     }
 
     void CalculateMovement_Limit()
@@ -43,10 +43,6 @@ public class Player : MonoBehaviour
 
         // X-axis limits
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -9.0f, 9.0f), transform.position.y, 0);
-
-        
-
-        // * Only activate one of these but not both.
     }
 
     void CalculateMovement_Wrap()
@@ -68,6 +64,16 @@ public class Player : MonoBehaviour
         else if (transform.position.x <= -11.3)
         {
            transform.position = new Vector3(11.3f, transform.position.y, 0);
+        }
+    }
+
+    void FireLaser()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+        {
+            _canFire = Time.time + _fireRate;
+            Vector3 offset = new Vector3(0, 0.65f, 0);
+            Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
         }
     }
 }
