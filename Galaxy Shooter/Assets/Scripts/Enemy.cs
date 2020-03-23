@@ -20,6 +20,6 @@ public class Enemy : MonoBehaviour
     {
         // Move down at x m/s
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
-        if (transform.position.y <= -6) { transform.position = new Vector3(_r, 7f, 0); }
+        if (transform.position.y <= -6)  transform.position = new Vector3(_r, 7f, 0); 
     }
 }
