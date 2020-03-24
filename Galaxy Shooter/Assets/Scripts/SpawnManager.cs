@@ -87,10 +87,10 @@ public class SpawnManager : MonoBehaviour
         int counter = 0;
         while (!_deadCheck)
         {
-            if (counter > 35)
+            if (counter > 30)
             {
                 Vector3 posToSpawn = new Vector3(Random.Range(-7f, 7f), 7, 0);
-                GameObject newEnemy = Instantiate(_enemy3Prefab, posToSpawn, Quaternion.identity);
+                GameObject newEnemy = Instantiate(_enemy4Prefab, posToSpawn, Quaternion.identity);
                 newEnemy.transform.parent = _enemyContainer.transform;
             }
             counter++;
@@ -103,10 +103,10 @@ public class SpawnManager : MonoBehaviour
         int counter = 0;
         while (!_deadCheck)
         {
-            if (counter > 12)
+            if (counter > 10)
             {
                 Vector3 posToSpawn = new Vector3(Random.Range(-9f, 9f), 7, 0);
-                GameObject newEnemy = Instantiate(_enemy3Prefab, posToSpawn, Quaternion.identity);
+                GameObject newEnemy = Instantiate(_enemy5Prefab, posToSpawn, Quaternion.identity);
                 newEnemy.transform.parent = _enemyContainer.transform;
             }
             counter++;
