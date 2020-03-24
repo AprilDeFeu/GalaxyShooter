@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cfec1d7671b984396f4ac5bf5caccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
-  _speed: 1
+  _level: 3
+  _speed: 1.75
   _enemyPrefab: {fileID: 6187731375610804740}
 --- !u!54 &-929219839806336077
 Rigidbody:

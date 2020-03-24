@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // public or private reference
-    // data type (int, float, double, long, bool, string, char, arrays, etc)
-    // variables have names
-    // (opt) assigned value
+    [SerializeField]
+    private enum Type1 { limit, wrap} 
+    [SerializeField]
+    private enum Type2 { easy, normal, hard }
+    [SerializeField]
+    private Type1 _movement;
+    [SerializeField]
+    private Type2 _difficulty;
     [SerializeField]
     private float _speed = 15f;
     [SerializeField]
@@ -15,18 +19,48 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _fireRate = 0.2f;
     private float _canFire = -1f;
+    [SerializeField]
+    private int _lives;
+    private SpawnManager _spawnManager;
      
     // Start is called before the first frame update
     void Start()
     {
         // Current position = new position (0,0,0)
-        transform.position = new Vector3(0, 0, 0); 
+        transform.position = new Vector3(0, 0, 0);
+        switch (_difficulty)
+        {
+            case Type2.easy:
+                _lives = 5;
+                break;
+
+            case Type2.normal:
+                _lives = 3;
+                break;
+
+            case Type2.hard:
+                _lives = 1;
+                break;
+        }
+        _spawnManager = GameObject.FindGameObjectWithTag("Spawn Manager").GetComponent<SpawnManager>();
+        if (_spawnManager == null) Debug.LogError("Spawn Manager is NULL. This occurs when the \"Spawn Manager\" GameObject is not attached to the script.");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        CalculateMovement_Limit();
+        switch (_movement)
+        {
+            case Type1.limit:
+                CalculateMovement_Limit();
+                break;
+
+            case Type1.wrap:
+                CalculateMovement_Wrap();
+                break;
+        }
+        
         FireLaser();
     }
 
@@ -74,6 +108,16 @@ public class Player : MonoBehaviour
             _canFire = Time.time + _fireRate;
             Vector3 offset = new Vector3(0, 0.65f, 0);
             Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
+        }
+    }
+
+    public void Damage()
+    {
+        _lives--;
+        if (_lives < 1) 
+        {
+            _spawnManager.PlayerDeath();
+            Destroy(this.gameObject);
         }
     }
 }

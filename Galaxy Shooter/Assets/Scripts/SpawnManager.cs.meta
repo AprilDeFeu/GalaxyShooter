@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 88d3d60be7a8c554799e8121f56b066e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _enemy1Prefab: {fileID: 3043237376077046143, guid: a45da5f4b238ff748b803b9f104b8a01,
+      type: 3}
+  - _enemy2Prefab: {fileID: 1302537450644516772, guid: 5a50f51b489ce4f4fb2abbdacf38f619,
+      type: 3}
+  - _enemy3Prefab: {fileID: 2131372238192599263, guid: 0637ea4b7f128ed42b1633f2c58c5350,
+      type: 3}
+  - _enemy4Prefab: {fileID: 6187731375610804740, guid: eb8465ed6e558784698a9a5cf679122c,
+      type: 3}
+  - _enemy5Prefab: {fileID: 3011411120764865712, guid: 427e510a33837fc4d9c3101d85db6c21,
+      type: 3}
+  - _enemyContainer: {instanceID: 0}
+  - _healthPrefab: {fileID: 8509392148468918409, guid: efad4c645c0798148b87f753078adb6c,
+      type: 3}
+  - _powerPrefab: {fileID: 4056308991306972795, guid: 698f5a933bab7b645b35b4d33cd4f784,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
