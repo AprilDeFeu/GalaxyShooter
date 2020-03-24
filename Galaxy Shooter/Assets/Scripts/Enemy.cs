@@ -46,11 +46,11 @@ public class Enemy : MonoBehaviour
     {
         string player = "Player";
         string laser = "Laser(Clone)";
-        if (other.transform.name.Equals(player)) Destroy(other) ;
+        if (other.transform.name.Equals(player)) Destroy(other.gameObject) ;
         if (other.transform.name.Equals(laser))
         {
-            Destroy(this);
-            Destroy(other);
+            Destroy(this.gameObject);
+            Destroy(other.gameObject);
         }
     }
 
