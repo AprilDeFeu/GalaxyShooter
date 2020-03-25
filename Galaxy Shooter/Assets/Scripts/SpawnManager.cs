@@ -154,7 +154,7 @@ public class SpawnManager : MonoBehaviour
         int counter = 0;
         while (!_deadCheck)
         {
-            if (counter > -1)
+            if (counter > 0)
             {
                 Vector3 posToSpawn = new Vector3(Random.Range(-9f, 9f), 7, 0);
                 GameObject tsItem = Instantiate(_tsPrefab, posToSpawn, Quaternion.identity);

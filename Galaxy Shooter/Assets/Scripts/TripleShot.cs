@@ -28,8 +28,6 @@ public class TripleShot : MonoBehaviour
         }
     }
 
-    
-
     void Movement()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
