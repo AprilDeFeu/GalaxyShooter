@@ -15,12 +15,17 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 15f;
     [SerializeField]
+    private float _tsTime = 10f;
+    [SerializeField]
     private GameObject _laserPrefab;
+    [SerializeField]
+    private GameObject _tsPrefab;
     [SerializeField]
     private float _fireRate = 0.2f;
     private float _canFire = -1f;
+    public int _lives;
     [SerializeField]
-    private int _lives;
+    private bool _activeTS = false;
     private SpawnManager _spawnManager;
      
     // Start is called before the first frame update
@@ -106,18 +111,58 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             _canFire = Time.time + _fireRate;
-            Vector3 offset = new Vector3(0, 0.65f, 0);
-            Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
+            if (_activeTS == false)
+            {
+                Vector3 offset = new Vector3(0, 0.65f, 0);
+                Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_tsPrefab, transform.position, Quaternion.identity);
+            }
+
         }
+
     }
 
-    public void Damage()
+    public void Damage(int dmg)
     {
-        _lives--;
+        
+        if (_lives - dmg < 0) _lives = 0;
+        else _lives -= dmg;
         if (_lives < 1) 
         {
             _spawnManager.PlayerDeath();
             Destroy(this.gameObject);
         }
     }
+
+    public void Heal()
+    {
+        _lives++;
+    }
+
+    public int getLives()
+    {
+        return _lives;
+    }
+
+    public void tsON()
+    {
+        _activeTS = true;
+        StartCoroutine(Counter());
+    }
+
+    IEnumerator Counter()
+    {
+        int timer = 0;
+        while (timer < _tsTime)
+        {
+            Debug.Log("Time until TS off: " + (_tsTime - timer) + "s.");
+            timer++;
+            yield return new WaitForSeconds(1.0f);
+        }
+        _activeTS = false;
+    }
+
 }

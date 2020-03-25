@@ -6,9 +6,14 @@ TagManager:
   tags:
   - Enemy
   - Laser
-  - PickUps
   - Spawn Manager
   - BackGround
+  - Health
+  - PowerUp1
+  - PowerUp2
+  - PowerUp3
+  - PickUps
+  - Score
   layers:
   - Default
   - TransparentFX

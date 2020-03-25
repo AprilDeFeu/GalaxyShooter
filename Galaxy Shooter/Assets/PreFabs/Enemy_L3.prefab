@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1201421099992701587}
   - component: {fileID: 7280380157814237618}
-  - component: {fileID: 4827433111473871832}
   - component: {fileID: 2857096177953079529}
+  - component: {fileID: -4108873256045812571}
   - component: {fileID: 3003012494479154181}
   m_Layer: 0
   m_Name: Enemy_L3
@@ -84,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!135 &4827433111473871832
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4928194170571686862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.1
-  m_Center: {x: 0, y: 0.13, z: 0}
 --- !u!114 &2857096177953079529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,9 +96,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cfec1d7671b984396f4ac5bf5caccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: 2
+  _repeat: 1
+  _level: 3
   _speed: 2.5
   _enemyPrefab: {fileID: 0}
+--- !u!65 &-4108873256045812571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928194170571686862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.54, y: 2.85, z: 0.2}
+  m_Center: {x: -0.02, y: 0.03, z: 0}
 --- !u!54 &3003012494479154181
 Rigidbody:
   m_ObjectHideFlags: 0

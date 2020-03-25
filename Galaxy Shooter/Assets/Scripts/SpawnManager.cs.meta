@@ -4,17 +4,20 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - _enemy1Prefab: {fileID: 3043237376077046143, guid: a45da5f4b238ff748b803b9f104b8a01,
+  - _asteroidPrefab: {fileID: 8208118192369977606, guid: e22bde8ebd3687b4eb5efcef428dda63,
       type: 3}
-  - _enemy2Prefab: {fileID: 1302537450644516772, guid: 5a50f51b489ce4f4fb2abbdacf38f619,
+  - _enemy1Prefab: {fileID: 4611684218524190467, guid: a29b415717c71fa4babd1a2f417128fb,
       type: 3}
-  - _enemy3Prefab: {fileID: 2131372238192599263, guid: 0637ea4b7f128ed42b1633f2c58c5350,
+  - _enemy2Prefab: {fileID: 1000091127585550522, guid: 5a50f51b489ce4f4fb2abbdacf38f619,
       type: 3}
-  - _enemy4Prefab: {fileID: 6187731375610804740, guid: eb8465ed6e558784698a9a5cf679122c,
+  - _enemy3Prefab: {fileID: 4928194170571686862, guid: 0637ea4b7f128ed42b1633f2c58c5350,
       type: 3}
-  - _enemy5Prefab: {fileID: 3011411120764865712, guid: 427e510a33837fc4d9c3101d85db6c21,
+  - _enemy4Prefab: {fileID: 4065864505793165350, guid: eb8465ed6e558784698a9a5cf679122c,
+      type: 3}
+  - _enemy5Prefab: {fileID: 4801878904027918444, guid: 427e510a33837fc4d9c3101d85db6c21,
       type: 3}
   - _enemyContainer: {instanceID: 0}
+  - _healthContainer: {instanceID: 0}
   - _healthPrefab: {fileID: 8509392148468918409, guid: efad4c645c0798148b87f753078adb6c,
       type: 3}
   - _powerPrefab: {fileID: 4056308991306972795, guid: 698f5a933bab7b645b35b4d33cd4f784,

@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
+    private GameObject _asteroidPrefab;
+    [SerializeField]
     private GameObject _enemy1Prefab;
     [SerializeField]
     private GameObject _enemy2Prefab;
@@ -17,7 +19,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _enemyContainer;
     [SerializeField]
+    private GameObject _itemContainer;
+    [SerializeField]
     private GameObject _healthPrefab;
+    [SerializeField]
+    private GameObject _tsPrefab;
     [SerializeField]
     private GameObject _powerPrefab;
     private bool _deadCheck = false;
@@ -25,11 +31,14 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(SpawnAsteroid());
         StartCoroutine(SpawnRoutine1());
         StartCoroutine(SpawnRoutine2());
         StartCoroutine(SpawnRoutine3());
         StartCoroutine(SpawnRoutine4());
         StartCoroutine(SpawnRoutine5());
+        StartCoroutine(SpawnRoutineHealth());
+        StartCoroutine(SpawnRoutineTS());
     }
 
     // Update is called once per frame
@@ -40,6 +49,16 @@ public class SpawnManager : MonoBehaviour
 
     // spawn game objects with xyz position at time t
 
+    IEnumerator SpawnAsteroid()
+    {
+        while (!_deadCheck)
+        {
+            Vector3 posToSpawn = new Vector3(Random.Range(-10f, 10f), 7, 0);
+            GameObject newEnemy = Instantiate(_asteroidPrefab, posToSpawn, Quaternion.identity);
+            newEnemy.transform.parent = _enemyContainer.transform;
+            yield return new WaitForSeconds(15f);
+        }
+    }
     IEnumerator SpawnRoutine1()
     {
         while (!_deadCheck)
@@ -47,7 +66,7 @@ public class SpawnManager : MonoBehaviour
             Vector3 posToSpawn = new Vector3(Random.Range(-9f, 9f), 7, 0);
             GameObject newEnemy = Instantiate(_enemy1Prefab, posToSpawn, Quaternion.identity);
             newEnemy.transform.parent = _enemyContainer.transform;
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(3f);
         }
     }
     IEnumerator SpawnRoutine2()
@@ -62,7 +81,7 @@ public class SpawnManager : MonoBehaviour
                 newEnemy.transform.parent = _enemyContainer.transform;
             }
             counter++;
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(4f);
         }
     }
 
@@ -78,7 +97,7 @@ public class SpawnManager : MonoBehaviour
                 newEnemy.transform.parent = _enemyContainer.transform;
             }
             counter++;
-            yield return new WaitForSeconds(4.0f);
+            yield return new WaitForSeconds(5f);
         }
     }
 
@@ -94,7 +113,7 @@ public class SpawnManager : MonoBehaviour
                 newEnemy.transform.parent = _enemyContainer.transform;
             }
             counter++;
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(2.5f);
         }
     }
 
@@ -110,12 +129,49 @@ public class SpawnManager : MonoBehaviour
                 newEnemy.transform.parent = _enemyContainer.transform;
             }
             counter++;
-            yield return new WaitForSeconds(8.0f);
+            yield return new WaitForSeconds(8f);
+        }
+    }
+
+    IEnumerator SpawnRoutineHealth()
+    {
+        int counter = 0;
+        while (!_deadCheck)
+        {
+            if (counter > 0)
+            {
+                Vector3 posToSpawn = new Vector3(Random.Range(-9f, 9f), 7, 0);
+                GameObject healItem = Instantiate(_healthPrefab, posToSpawn, Quaternion.identity);
+                healItem.transform.parent = _itemContainer.transform;
+            }
+            counter++;
+            yield return new WaitForSeconds(50.0f+(counter-1)*10);
+        }
+    }
+
+    IEnumerator SpawnRoutineTS()
+    {
+        int counter = 0;
+        while (!_deadCheck)
+        {
+            if (counter > -1)
+            {
+                Vector3 posToSpawn = new Vector3(Random.Range(-9f, 9f), 7, 0);
+                GameObject tsItem = Instantiate(_tsPrefab, posToSpawn, Quaternion.identity);
+                tsItem.transform.parent = _itemContainer.transform;
+            }
+            counter++;
+            yield return new WaitForSeconds(40.0f + (counter - 1) * 5);
         }
     }
 
     public void PlayerDeath()
     {
         _deadCheck = true;
+    }
+
+    public bool getDeath()
+    {
+        return _deadCheck;
     }
 }
