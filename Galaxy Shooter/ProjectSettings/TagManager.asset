@@ -9,11 +9,12 @@ TagManager:
   - Spawn Manager
   - BackGround
   - Health
-  - PowerUp1
-  - PowerUp2
-  - PowerUp3
   - PickUps
   - Score
+  - TripleShot
+  - Speed
+  - Shield
+  - ShieldDeployed
   layers:
   - Default
   - TransparentFX
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 540761041
+    locked: 0
+  - name: Shields
+    uniqueID: 728018983
     locked: 0

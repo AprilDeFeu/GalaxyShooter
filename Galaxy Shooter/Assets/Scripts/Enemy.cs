@@ -92,14 +92,19 @@ public class Enemy : MonoBehaviour
     {
         string player = "Player";
         string laser = "Laser";
-        if (other.tag == player) 
+        if (other.tag == "ShieldDeployed")
+        {
+            Destroy(this.gameObject);
+            Shield temp = other.transform.GetComponent<Shield>();
+            if (temp != null) temp.Damage(dmg);
+        }
+        else if (other.tag == player)
         {
             Destroy(this.gameObject);
             Player temp = other.transform.GetComponent<Player>();
             if (temp != null) temp.Damage(dmg);
-            Debug.Log("Player Lives: " + temp.getLives());
         }
-        if (other.tag == laser)
+        else if (other.tag == laser)
         {
             Destroy(other.gameObject);
             EnemyDamage();

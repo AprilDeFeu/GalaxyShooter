@@ -13,19 +13,26 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Type2 _difficulty;
     [SerializeField]
-    private float _speed = 15f;
+    private float _speed = 10f;
+    [SerializeField]
+    private float _speedTime = 10f;
+    [SerializeField]
+    private GameObject _tsPrefab;
     [SerializeField]
     private float _tsTime = 10f;
     [SerializeField]
-    private GameObject _laserPrefab;
+    private float _shieldTime = 20f;
     [SerializeField]
-    private GameObject _tsPrefab;
+    private GameObject _shieldPrefab;
+    [SerializeField]
+    private GameObject _laserPrefab;
     [SerializeField]
     private float _fireRate = 0.2f;
     private float _canFire = -1f;
     public int _lives;
     [SerializeField]
     private bool _activeTS = false;
+    [SerializeField]
     private SpawnManager _spawnManager;
      
     // Start is called before the first frame update
@@ -118,6 +125,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                Debug.Log("Triple Shot tested.");
                 Instantiate(_tsPrefab, transform.position, Quaternion.identity);
             }
 
@@ -150,19 +158,44 @@ public class Player : MonoBehaviour
     public void tsON()
     {
         _activeTS = true;
-        StartCoroutine(Counter());
+        StartCoroutine(CounterTS());
+        
     }
 
-    IEnumerator Counter()
+    public void speedON()
+    {
+        _speed = 17.5f;
+        StartCoroutine(CounterSpeed());
+    }
+
+    public void shieldON()
+    {
+        Instantiate(_shieldPrefab, transform.position, Quaternion.identity);
+    }
+
+    IEnumerator CounterTS()
     {
         int timer = 0;
         while (timer < _tsTime)
         {
-            Debug.Log("Time until TS off: " + (_tsTime - timer) + "s.");
             timer++;
             yield return new WaitForSeconds(1.0f);
         }
         _activeTS = false;
+
     }
+
+    IEnumerator CounterSpeed()
+    {
+        int timer = 0;
+        while (timer < _speedTime)
+        {
+            timer++;
+            yield return new WaitForSeconds(1.0f);
+        }
+        _speed = 10f;
+
+    }
+
 
 }

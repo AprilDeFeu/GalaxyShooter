@@ -23,9 +23,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _healthPrefab;
     [SerializeField]
+    private GameObject _shieldPrefab;
+    [SerializeField]
     private GameObject _tsPrefab;
     [SerializeField]
-    private GameObject _powerPrefab;
+    private GameObject _speedPrefab;
     private bool _deadCheck = false;
 
     // Start is called before the first frame update
@@ -39,6 +41,7 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SpawnRoutine5());
         StartCoroutine(SpawnRoutineHealth());
         StartCoroutine(SpawnRoutineTS());
+        StartCoroutine(SpawnRoutineSpeed());
     }
 
     // Update is called once per frame
@@ -145,7 +148,7 @@ public class SpawnManager : MonoBehaviour
                 healItem.transform.parent = _itemContainer.transform;
             }
             counter++;
-            yield return new WaitForSeconds(50.0f+(counter-1)*10);
+            yield return new WaitForSeconds(50.0f+(counter-1)* Random.Range(7f, 15f));
         }
     }
 
@@ -161,7 +164,39 @@ public class SpawnManager : MonoBehaviour
                 tsItem.transform.parent = _itemContainer.transform;
             }
             counter++;
-            yield return new WaitForSeconds(40.0f + (counter - 1) * 5);
+            yield return new WaitForSeconds(40.0f + (counter - 1) * Random.Range(5f, 12f));
+        }
+    }
+
+    IEnumerator SpawnRoutineSpeed()
+    {
+        int counter = 0;
+        while (!_deadCheck)
+        {
+            if (counter > 0)
+            {
+                Vector3 posToSpawn = new Vector3(Random.Range(-9f, 9f), 7, 0);
+                GameObject speedItem = Instantiate(_speedPrefab, posToSpawn, Quaternion.identity);
+                speedItem.transform.parent = _itemContainer.transform;
+            }
+            counter++;
+            yield return new WaitForSeconds(45.0f + (counter - 1) * Random.Range(10f, 17f));
+        }
+    }
+
+    IEnumerator SpawnRoutineShield()
+    {
+        int counter = 0;
+        while (!_deadCheck)
+        {
+            if (counter > 0)
+            {
+                Vector3 posToSpawn = new Vector3(Random.Range(-9f, 9f), 7, 0);
+                GameObject shieldItem = Instantiate(_shieldPrefab, posToSpawn, Quaternion.identity);
+                shieldItem.transform.parent = _itemContainer.transform;
+            }
+            counter++;
+            yield return new WaitForSeconds(60.0f + (counter - 1) * Random.Range(8f, 17f));
         }
     }
 
