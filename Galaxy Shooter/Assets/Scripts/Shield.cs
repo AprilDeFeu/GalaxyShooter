@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     [SerializeField]
-    private int _protectionLevel=10;
+    private int _protectionLevel=5;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class Shield : MonoBehaviour
 
     public void updateShield()
     {
-        _protectionLevel = 10;
+        _protectionLevel = 5;
     }
 
     public void Damage(int dam)

@@ -15,6 +15,13 @@ TagManager:
   - Speed
   - Shield
   - ShieldDeployed
+  - UIManager
+  - Time
+  - Lives
+  - GameOver
+  - Retry
+  - GameManager
+  - Exit
   layers:
   - Default
   - TransparentFX

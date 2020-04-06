@@ -19,12 +19,14 @@ public class Enemy : MonoBehaviour
     private int lives;
     private int score;
     private int dmg;
-    private Score _score; 
+    private UIManager _score;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        _score = GameObject.FindGameObjectWithTag("Score").GetComponent<Score>();
+        _score = GameObject.FindGameObjectWithTag("Score").GetComponent<UIManager>();
+        anim = GetComponent<Animator>();
         switch (_level)
         {
             case Type.Zero:
@@ -94,12 +96,14 @@ public class Enemy : MonoBehaviour
         string laser = "Laser";
         if (other.tag == "ShieldDeployed")
         {
+            anim.Play("Enemy_explosion_1");
             Destroy(this.gameObject);
             Shield temp = other.transform.GetComponent<Shield>();
             if (temp != null) temp.Damage(dmg);
         }
         else if (other.tag == player)
         {
+            anim.Play("Enemy_explosion_1");
             Destroy(this.gameObject);
             Player temp = other.transform.GetComponent<Player>();
             if (temp != null) temp.Damage(dmg);

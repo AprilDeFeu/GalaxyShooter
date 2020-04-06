@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a9976c4b9ca0949b4d2293e0a2f008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _protectionLevel: 10
+  _protectionLevel: 5
 --- !u!54 &2185097252729248683
 Rigidbody:
   m_ObjectHideFlags: 0

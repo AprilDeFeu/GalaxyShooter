@@ -42,6 +42,7 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SpawnRoutineHealth());
         StartCoroutine(SpawnRoutineTS());
         StartCoroutine(SpawnRoutineSpeed());
+        StartCoroutine(SpawnRoutineShield());
     }
 
     // Update is called once per frame

@@ -142,6 +142,8 @@ public class Player : MonoBehaviour
         {
             _spawnManager.PlayerDeath();
             Destroy(this.gameObject);
+            GameManager _gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            _gm.GameOver();
         }
     }
 
