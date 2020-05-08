@@ -20,13 +20,13 @@ public class Enemy : MonoBehaviour
     private int score;
     private int dmg;
     private UIManager _score;
-    private Animator anim;
+    private Animator _anim;
 
     // Start is called before the first frame update
     void Start()
     {
         _score = GameObject.FindGameObjectWithTag("Score").GetComponent<UIManager>();
-        anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
         switch (_level)
         {
             case Type.Zero:
@@ -96,15 +96,19 @@ public class Enemy : MonoBehaviour
         string laser = "Laser";
         if (other.tag == "ShieldDeployed")
         {
-            anim.Play("Enemy_explosion_1");
-            Destroy(this.gameObject);
+           _anim.SetTrigger("E01Ded");
+            _speed *= 0.3f;
+            Destroy(this.GetComponent<BoxCollider>());
+            Destroy(this.gameObject, 2.8f);
             Shield temp = other.transform.GetComponent<Shield>();
             if (temp != null) temp.Damage(dmg);
         }
         else if (other.tag == player)
         {
-            anim.Play("Enemy_explosion_1");
-            Destroy(this.gameObject);
+            _anim.SetTrigger("E01Ded");
+            _speed *= 0.3f;
+            Destroy(this.GetComponent<BoxCollider>());
+            Destroy(this.gameObject, 2.8f);
             Player temp = other.transform.GetComponent<Player>();
             if (temp != null) temp.Damage(dmg);
         }
@@ -171,7 +175,10 @@ public class Enemy : MonoBehaviour
         lives--;
         if (lives < 1) 
         {
-            Destroy(this.gameObject);
+            _anim.SetTrigger("E01Ded");
+            _speed *= 0.3f;
+            Destroy(this.GetComponent<BoxCollider>());
+            Destroy(this.gameObject, 2.8f);
             _score.addScore(score);
         }
     }

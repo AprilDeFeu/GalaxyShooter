@@ -15,7 +15,7 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+        if (GameObject.FindGameObjectWithTag("Player")!=null) this.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
     }
 
     public void updateShield()
@@ -26,7 +26,7 @@ public class Shield : MonoBehaviour
     public void Damage(int dam)
     {
         _protectionLevel -= dam;
-        if (_protectionLevel <= 0) Destroy(this.gameObject);
+        if (_protectionLevel <= 0 || GameObject.FindGameObjectWithTag("Player") != null) Destroy(this.gameObject);
         
     }
 
