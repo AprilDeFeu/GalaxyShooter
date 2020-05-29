@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
+    private GameObject _rightDmg, _leftDmg;
+
+    [SerializeField]
     private float _fireRate = 0.2f;
     private float _canFire = -1f;
     public int _lives;
@@ -34,7 +37,8 @@ public class Player : MonoBehaviour
     private bool _activeTS = false;
     [SerializeField]
     private SpawnManager _spawnManager;
-     
+    private Animator _anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -138,7 +142,10 @@ public class Player : MonoBehaviour
         
         if (_lives - dmg < 0) _lives = 0;
         else _lives -= dmg;
-        if (_lives < 1) 
+        
+        if (_lives == 4) ;
+        if (_lives == 3) ;
+        else if (_lives < 1) 
         {
             _spawnManager.PlayerDeath();
             Destroy(this.gameObject);

@@ -65,6 +65,9 @@ TagManager:
   - name: Foreground
     uniqueID: 540761041
     locked: 0
+  - name: Player Damage
+    uniqueID: 3236648899
+    locked: 0
   - name: Shields
     uniqueID: 728018983
     locked: 0
