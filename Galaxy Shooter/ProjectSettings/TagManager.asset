@@ -22,6 +22,8 @@ TagManager:
   - Retry
   - GameManager
   - Exit
+  - Damage1
+  - Damage2
   layers:
   - Default
   - TransparentFX
@@ -54,7 +56,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Post-Processing FX
   m_SortingLayers:
   - name: Default
     uniqueID: 0

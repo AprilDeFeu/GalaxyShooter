@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
     private SpawnManager _spawnManager;
     private Animator _anim;
 
+    public GameObject _damage1;
+    public GameObject _damage2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +69,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DamageAnimationOnPlayer();
         switch (_movement)
         {
             case Type1.limit:
@@ -78,6 +82,23 @@ public class Player : MonoBehaviour
         }
         
         FireLaser();
+    }
+
+    void DamageAnimationOnPlayer() 
+    {
+        switch (_difficulty)
+        {
+            case Type2.easy:
+                if (_lives == 3) _damage1.SetActive(true);
+                if (_lives == 1) _damage2.SetActive(true);
+                break;
+
+            case Type2.normal:
+                if (_lives == 2) _damage1.SetActive(true);
+                if (_lives == 1) _damage2.SetActive(true);
+                break;
+
+        }
     }
 
     void CalculateMovement_Limit()
