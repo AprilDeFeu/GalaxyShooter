@@ -15,12 +15,13 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float _speed = 2.0f;
     [SerializeField]
-    private GameObject _enemyPrefab;
+    private AudioSource _death;
     private int lives;
     private int score;
     private int dmg;
     private UIManager _score;
     private Animator _anim;
+
 
     // Start is called before the first frame update
     void Start()
@@ -177,8 +178,10 @@ public class Enemy : MonoBehaviour
         {
             _anim.SetTrigger("E01Ded");
             _speed *= 0.3f;
+            _death.Play();
             Destroy(this.GetComponent<BoxCollider>());
             Destroy(this.gameObject, 2.8f);
+            
             _score.addScore(score);
         }
     }

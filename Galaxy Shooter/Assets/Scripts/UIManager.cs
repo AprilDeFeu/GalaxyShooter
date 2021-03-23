@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,6 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    int counter = 0;
     private TextMeshProUGUI _tM;
     private float time;
     private float seconds;
@@ -18,6 +17,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         anim = GetComponent<Animator>();
         _tM = GetComponent<TextMeshProUGUI>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -77,7 +77,5 @@ public class UIManager : MonoBehaviour
     {
         _tM.text = "Lives: " + player.getLives().ToString();
     }
-
-
 
 }

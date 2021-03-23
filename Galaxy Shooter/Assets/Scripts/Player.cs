@@ -21,13 +21,17 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _tsTime = 10f;
     [SerializeField]
-    private float _shieldTime = 20f;
-    [SerializeField]
     private GameObject _shieldPrefab;
     [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
-    private GameObject _rightDmg, _leftDmg;
+    private AudioSource _laserSound;
+    [SerializeField]
+    private AudioSource _powerUpSound;
+    [SerializeField]
+    private AudioSource _healSound;
+    [SerializeField]
+    private AudioSource _deathSound;
 
     [SerializeField]
     private float _fireRate = 0.2f;
@@ -89,13 +93,17 @@ public class Player : MonoBehaviour
         switch (_difficulty)
         {
             case Type2.easy:
-                if (_lives == 3) _damage1.SetActive(true);
-                if (_lives == 1) _damage2.SetActive(true);
+                if (_lives < 4) _damage1.SetActive(true);
+                if (_lives < 2) _damage2.SetActive(true);
+                if (_lives > 1) _damage2.SetActive(false);
+                if (_lives > 3) _damage2.SetActive(false);
                 break;
 
             case Type2.normal:
-                if (_lives == 2) _damage1.SetActive(true);
-                if (_lives == 1) _damage2.SetActive(true);
+                if (_lives < 3) _damage1.SetActive(true);
+                if (_lives < 2) _damage2.SetActive(true);
+                if (_lives > 1) _damage2.SetActive(false);
+                if (_lives > 2) _damage2.SetActive(false);
                 break;
 
         }
@@ -147,11 +155,12 @@ public class Player : MonoBehaviour
             {
                 Vector3 offset = new Vector3(0, 0.65f, 0);
                 Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
+                _laserSound.Play();
             }
             else
             {
-                Debug.Log("Triple Shot tested.");
                 Instantiate(_tsPrefab, transform.position, Quaternion.identity);
+                _laserSound.Play();
             }
 
         }
@@ -163,13 +172,11 @@ public class Player : MonoBehaviour
         
         if (_lives - dmg < 0) _lives = 0;
         else _lives -= dmg;
-        
-        if (_lives == 4) ;
-        if (_lives == 3) ;
-        else if (_lives < 1) 
+        if (_lives < 1) 
         {
             _spawnManager.PlayerDeath();
             Destroy(this.gameObject);
+            _deathSound.Play();
             GameManager _gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             _gm.GameOver();
         }
@@ -177,6 +184,7 @@ public class Player : MonoBehaviour
 
     public void Heal()
     {
+        _healSound.Play();
         _lives++;
     }
 
@@ -187,6 +195,7 @@ public class Player : MonoBehaviour
 
     public void tsON()
     {
+        _powerUpSound.Play();
         _activeTS = true;
         StartCoroutine(CounterTS());
         
@@ -194,12 +203,14 @@ public class Player : MonoBehaviour
 
     public void speedON()
     {
+        _powerUpSound.Play();
         _speed = 17.5f;
         StartCoroutine(CounterSpeed());
     }
 
     public void shieldON()
     {
+        _powerUpSound.Play();
         Instantiate(_shieldPrefab, transform.position, Quaternion.identity);
     }
 

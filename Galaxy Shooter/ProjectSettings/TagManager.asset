@@ -24,6 +24,7 @@ TagManager:
   - Exit
   - Damage1
   - Damage2
+  - Pause
   layers:
   - Default
   - TransparentFX
