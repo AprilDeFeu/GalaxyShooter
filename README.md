@@ -1,2 +1,3 @@
 # GalaxyShooter
-A game to learn game development on Unity. Complete and working on Windows systems.
+My very first videogame, where it all began. Complete and working on Windows systems.
+
